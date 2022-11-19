@@ -36,9 +36,6 @@ code_event_times_missing <- nimbleCode({
    
     cWeek[i] <- rel_Week[Day_event_rounded[i]]
     Week[i] <- cWeek[i]
-    
-    cWeek_SpUnit[i] <- 105*(SpUnit[i]-1)+Week[i]-SpUnit[i]+1
-    Week_SpUnit[i] <- cWeek_SpUnit[i]
   }
   
   # Unstructured week effect
