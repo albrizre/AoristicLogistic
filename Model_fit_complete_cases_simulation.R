@@ -45,7 +45,7 @@ for (i in 1:6){
 
   # Load grid Valencia
 
-  grid=readOGR("AoristicMissing/Barrios Valencia/barrios.shp")
+  grid=readOGR("Boroughs/barrios.shp")
   proj4string(grid)="+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
   grid=spTransform(grid,"+proj=utm +zone=30 ellps=WGS84")
   plot(grid)
