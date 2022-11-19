@@ -13,9 +13,7 @@ code_event_times_complete_cases <- nimbleCode({
     logit(pi[i]) <- alpha + beta_tuesday*Tuesday[i] + beta_wednesday*Wednesday[i] + beta_thursday*Thursday[i] +
                   beta_friday*Friday[i] + beta_saturday*Saturday[i] + beta_sunday*Sunday[i] + 
                   delta[Week[i]] + epsilon[Week[i]] + u[SpUnit[i]] + v[SpUnit[i]] 
-    
-    # + phi[Week_SpUnit[i]]
-    
+ 
   } 
   
   # Unstructured week effect
@@ -41,12 +39,5 @@ code_event_times_complete_cases <- nimbleCode({
   u[1:G] ~ dcar_normal(adj_grid[1:N_grid_w], weights_grid[1:N_grid_w], num_grid[1:G], tau.u, zero_mean = 1) 
   sigma2.u ~ dgamma(1, 0.01)
   tau.u <- 1/sigma2.u
-  
-  # Space-time effect
-  # for (i in 1:N_INT){
-  #   phi[i] ~ dnorm(0,tau.phi)
-  # }
-  # sigma2.phi ~ dgamma(1, 0.01)
-  # tau.phi <- 1/sigma2.phi
 
 })
