@@ -13,7 +13,6 @@ code_event_times_complete_cases <- nimbleCode({
     logit(pi[i]) <- alpha + beta_tuesday*Tuesday[i] + beta_wednesday*Wednesday[i] + beta_thursday*Thursday[i] +
                   beta_friday*Friday[i] + beta_saturday*Saturday[i] + beta_sunday*Sunday[i] + 
                   delta[Week[i]] + epsilon[Week[i]] + u[SpUnit[i]] + v[SpUnit[i]] 
- 
   } 
   
   # Unstructured week effect
