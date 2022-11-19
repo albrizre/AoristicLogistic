@@ -11,17 +11,17 @@ library(pkgbuild)
 
 # Load data
 
-load("AoristicMissing/Data/rel.rda")
-load("AoristicMissing/Data/aux_Week_SpUnit_num.rda")
-source("AoristicMissing/Functions/RW2.R")
-source("AoristicMissing/code_event_times_complete_cases.R")
-source("AoristicMissing/code_event_times_missing.R")
+load("Data/rel.rda")
+load("Data/aux_Week_SpUnit_num.rda")
+source("Functions/RW2.R")
+source("code_event_times_complete_cases.R")
+source("code_event_times_missing.R")
 
 for (i in 1:6){
 
   # Load data
   
-  load(paste0("AoristicMissing/Data/data_analysis_scenario_",i,".rda"))
+  load(paste0("Data/data_analysis_scenario_",i,".rda"))
 
   # Remove first rows with NA in Week
 
@@ -50,7 +50,7 @@ for (i in 1:6){
 
   # Load grid Valencia
 
-  grid=readOGR("AoristicMissing/Barrios Valencia/barrios.shp")
+  grid=readOGR("Boroughs/barrios.shp")
   proj4string(grid)="+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
   grid=spTransform(grid,"+proj=utm +zone=30 ellps=WGS84")
   plot(grid)
@@ -159,7 +159,7 @@ for (i in 1:6){
                                        "pi"), thin = 10,
                           niter = 20000, nburnin = 4000, nchains = 1,
                           summary = TRUE, WAIC = TRUE)
-  save(mcmc.output, file=paste0("AoristicMissing/Models/model_imputation_full_scenario_",i,".rda"))
+  save(mcmc.output, file=paste0("Models/model_imputation_full_scenario_",i,".rda"))
 
 }
 
